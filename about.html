@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKYDRIVE | About Us</title>
+<style>
+/* ── RESET & BASE ─────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-weight: 400;
+  color: #1c2333;
+  background: #ffffff;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+/* ── DESIGN TOKENS ────────────────────────────────────────────────────────── */
+:root {
+  --navy:        #0f1e3c;
+  --navy-mid:    #1a2e52;
+  --navy-light:  #243a66;
+  --steel:       #4a5e7a;
+  --steel-light: #7a8fa8;
+  --steel-pale:  #c2cedb;
+  --ice:         #e8edf3;
+  --white:       #ffffff;
+  --off-white:   #f5f7fa;
+  --text:        #1c2333;
+  --text-mid:    #3d4f66;
+  --text-light:  #6b7f99;
+  --accent:      #2563b0;
+  --accent-light:#3b7dd8;
+  --border:      #d0d9e4;
+}
+
+/* ── TYPOGRAPHY ───────────────────────────────────────────────────────────── */
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--navy);
+}
+
+/* ── UTILITY ──────────────────────────────────────────────────────────────── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ── NAV ──────────────────────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 200;
+  height: 64px;
+  background: rgba(255,255,255,0.97);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-logo-img {
+  height: 70px;
+  width: auto;
+  object-fit: contain;
+}
+.nav-logo-text {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--navy);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover,
+.nav-links a.active { color: var(--navy); }
+.nav-cta {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: var(--navy);
+  color: var(--white);
+  border: 2px solid var(--navy);
+  padding: 9px 22px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.nav-cta:hover {
+  background: var(--navy-light);
+  border-color: var(--navy-light);
+}
+
+/* ── PAGE HERO ────────────────────────────────────────────────────────────── */
+.page-hero {
+  background: var(--navy);
+  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.page-hero-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+}
+.page-hero-band {
+  position: absolute;
+  top: 0; right: 0;
+  width: 42%;
+  height: 100%;
+  background: linear-gradient(160deg, rgba(37,99,176,0.15) 0%, transparent 70%);
+  clip-path: polygon(18% 0, 100% 0, 100% 100%, 0% 100%);
+  pointer-events: none;
+}
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+}
+.page-hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent-light);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.page-hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  background: var(--accent-light);
+}
+.page-hero h1 {
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+.page-hero-sub {
+  font-size: 17px;
+  font-weight: 300;
+  color: var(--steel-pale);
+  max-width: 580px;
+  line-height: 1.75;
+}
+
+/* ── LEADERSHIP SECTION ───────────────────────────────────────────────────── */
+.leadership {
+  padding: 100px 0;
+  background: var(--off-white);
+  border-bottom: 1px solid var(--border);
+}
+.leadership-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+.leadership-header h2 {
+  font-size: clamp(28px, 3.5vw, 42px);
+  color: var(--navy);
+  margin-bottom: 14px;
+}
+.leadership-header p {
+  font-size: 16px;
+  color: var(--text-light);
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── BIO CARDS ────────────────────────────────────────────────────────────── */
+.bio-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+.bio-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-top: 3px solid var(--navy);
+  padding: 48px 40px;
+  position: relative;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.bio-card:hover {
+  box-shadow: 0 8px 32px rgba(15,30,60,0.1);
+  transform: translateY(-3px);
+}
+
+/* Photo placeholder */
+.bio-photo {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: var(--ice);
+  border: 2px solid var(--border);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.bio-photo svg {
+  width: 48px;
+  height: 48px;
+  opacity: 0.35;
+}
+
+.bio-title-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
+}
+.bio-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.bio-role {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--steel);
+  margin-bottom: 24px;
+}
+.bio-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--accent);
+  margin-bottom: 24px;
+}
+.bio-body {
+  font-size: 15px;
+  color: var(--text-mid);
+  line-height: 1.8;
+}
+.bio-placeholder {
+  font-size: 14px;
+  color: var(--steel-light);
+  font-style: italic;
+  border-left: 3px solid var(--border);
+  padding-left: 16px;
+  line-height: 1.75;
+}
+
+/* ── MISSION STRIPE ───────────────────────────────────────────────────────── */
+.mission-stripe {
+  background: var(--navy-mid);
+  padding: 72px 0;
+  border-bottom: 1px solid var(--navy-light);
+}
+.mission-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+.mission-left .section-label {
+  color: rgba(255,255,255,0.45);
+}
+.mission-left .section-label::before {
+  background: rgba(255,255,255,0.3);
+}
+.mission-left h2 {
+  font-size: clamp(26px, 3vw, 36px);
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.mission-right p {
+  font-size: 16px;
+  color: var(--steel-pale);
+  line-height: 1.8;
+}
+
+/* ── FOOTER ───────────────────────────────────────────────────────────────── */
+footer {
+  background: var(--navy);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  padding: 40px 0;
+}
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-logo-sm {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+}
+.footer-copy {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  text-align: center;
+  flex: 1;
+}
+.footer-copy a {
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+}
+.footer-copy a:hover { color: rgba(255,255,255,0.8); }
+.footer-links {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+}
+.footer-links a {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: rgba(255,255,255,0.8); }
+
+/* ── SCROLL REVEAL ────────────────────────────────────────────────────────── */
+.js-reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.js-reveal-ready .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── RESPONSIVE ───────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .container { padding: 0 24px; }
+  .nav-inner  { padding: 0 24px; }
+  .nav-links  { display: none; }
+  .bio-grid   { grid-template-columns: 1fr; }
+  .mission-inner { grid-template-columns: 1fr; gap: 32px; }
+  .footer-inner  { flex-direction: column; text-align: center; }
+  .page-hero { padding: 120px 0 60px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════ NAV ══════════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo-text">SKYDRIVE</a>
+    <ul class="nav-links">
+      <li><a href="index.html#capabilities">Capabilities</a></li>
+      <li><a href="index.html#technical">Technical</a></li>
+      <li><a href="index.html#approach">Approach</a></li>
+      <li><a href="index.html#standards">Standards</a></li>
+      <li><a href="about.html" class="active">About Us</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">Request Quote</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════ PAGE HERO ════════════════════════════════════ -->
+<section class="page-hero">
+  <div class="page-hero-grid"></div>
+  <div class="page-hero-band"></div>
+  <div class="container">
+    <div class="page-hero-content">
+      <div class="page-hero-eyebrow">Veteran-Led · U.S.-Based · Precision Manufacturing</div>
+      <h1>About SKYDRIVE</h1>
+      <p class="page-hero-sub">
+        Meet the leadership team behind SKYDRIVE's commitment to precision, accountability, and disciplined program execution in defense and aerospace manufacturing.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ LEADERSHIP BIOS ══════════════════════════════ -->
+<section class="leadership">
+  <div class="container">
+
+    <div class="leadership-header reveal">
+      <div class="section-label" style="justify-content:center;">Our Team</div>
+      <h2>Leadership</h2>
+      <p>SKYDRIVE is led by veterans who bring operational discipline and mission focus to every program.</p>
+    </div>
+
+    <div class="bio-grid">
+
+      <!-- ── President ── -->
+      <div class="bio-card reveal">
+        <div class="bio-photo">
+          <!-- Replace this SVG with an <img> tag when a photo is available -->
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="18" r="10" stroke="#4a5e7a" stroke-width="1.8" fill="none"/>
+            <path d="M6 42 C6 32.6 14.1 25 24 25 C33.9 25 42 32.6 42 42" stroke="#4a5e7a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+
+        <div class="bio-title-tag">President</div>
+        <div class="bio-name">Richard Carmean</div>
+        <div class="bio-role">President &amp; Co-Founder</div>
+        <div class="bio-divider"></div>
+
+        <div class="bio-body">
+          <p class="bio-placeholder">
+            Bio coming soon. Richard's background, military service, manufacturing experience, and vision for SKYDRIVE will be featured here.
+          </p>
+        </div>
+      </div>
+
+      <!-- ── Vice President ── -->
+      <div class="bio-card reveal" style="transition-delay:.1s">
+        <div class="bio-photo">
+          <!-- Replace this SVG with an <img> tag when a photo is available -->
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="24" cy="18" r="10" stroke="#4a5e7a" stroke-width="1.8" fill="none"/>
+            <path d="M6 42 C6 32.6 14.1 25 24 25 C33.9 25 42 32.6 42 42" stroke="#4a5e7a" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+
+        <div class="bio-title-tag">Vice President</div>
+        <div class="bio-name">Brandon Barrentine</div>
+        <div class="bio-role">Vice President &amp; Co-Founder</div>
+        <div class="bio-divider"></div>
+
+        <div class="bio-body">
+          <p class="bio-placeholder">
+            Bio coming soon. Brandon's background, military service, technical expertise, and role at SKYDRIVE will be featured here.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ MISSION STRIPE ════════════════════════════════ -->
+<section class="mission-stripe">
+  <div class="container">
+    <div class="mission-inner">
+      <div class="mission-left reveal">
+        <div class="section-label">Who We Are</div>
+        <h2>Veteran-Led. Precision-Driven.</h2>
+      </div>
+      <div class="mission-right reveal" style="transition-delay:.08s">
+        <p>SKYDRIVE was founded by veterans with a shared commitment to precision, accountability, and disciplined execution. We bring that same ethos from military service to every part we produce and every program we support — building a manufacturing company worthy of the defense and aerospace missions we serve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════ FOOTER ═══════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-sm">SKYDRIVE Manufacturing</div>
+    <div class="footer-copy">© 2026 SKYDRIVE. All rights reserved. · Collierville, TN · 901-491-1699 · <a href="mailto:info@skydrivemanufacturing.com">info@skydrivemanufacturing.com</a> · UEI: YZHGSHNK6HP9 · CAGE: 199K9 · SDVOSB: Pending (SBA)</div>
+    <ul class="footer-links">
+      <li><a href="index.html#capabilities">Capabilities</a></li>
+      <li><a href="about.html">About Us</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+  document.body.classList.add('js-reveal-ready');
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
